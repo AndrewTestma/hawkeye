@@ -81,7 +81,7 @@ function activateLightMode(){
 .justified-gallery img{
   opacity: 1
 }
-</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IAM-Identity-and-Access-Management"><span class="toc-number">1.</span> <span class="toc-text">IAM(Identity and Access Management)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#功能特性"><span class="toc-number">1.1.</span> <span class="toc-text">功能特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念（Basic-concept）"><span class="toc-number">1.2.</span> <span class="toc-text">基本概念（Basic concept）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#身份验证（Authentication）"><span class="toc-number">1.3.</span> <span class="toc-text">身份验证（Authentication）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EC2（Elastic-Compute-Cloud）"><span class="toc-number">2.</span> <span class="toc-text">EC2（Elastic Compute Cloud）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EC2的价格模型"><span class="toc-number">2.1.</span> <span class="toc-text">EC2的价格模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#按需实例"><span class="toc-number">2.1.1.</span> <span class="toc-text">按需实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Savings-Plans"><span class="toc-number">2.1.2.</span> <span class="toc-text">Savings Plans</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预留实例"><span class="toc-number">2.1.3.</span> <span class="toc-text">预留实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spot-实例（竞价实例）"><span class="toc-number">2.1.4.</span> <span class="toc-text">Spot 实例（竞价实例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#专用主机"><span class="toc-number">2.1.5.</span> <span class="toc-text">专用主机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EC2的实例类型"><span class="toc-number">2.2.</span> <span class="toc-text">EC2的实例类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安全组"><span class="toc-number">3.</span> <span class="toc-text">安全组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EBS-Elastic-Block-Store"><span class="toc-number">4.</span> <span class="toc-text">EBS(Elastic Block Store)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EBS的特点"><span class="toc-number">4.1.</span> <span class="toc-text">EBS的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EBS类型"><span class="toc-number">4.2.</span> <span class="toc-text">EBS类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ELB-Elastic-Load-Balancing"><span class="toc-number">5.</span> <span class="toc-text">ELB(Elastic Load Balancing)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB的类型和特点"><span class="toc-number">5.1.</span> <span class="toc-text">ELB的类型和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB的模式"><span class="toc-number">5.2.</span> <span class="toc-text">ELB的模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Autoscaling"><span class="toc-number">6.</span> <span class="toc-text">Autoscaling</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#S3-Simple-Storage-Service"><span class="toc-number">7.</span> <span class="toc-text">S3(Simple Storage Service)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#S3-Glacier"><span class="toc-number">7.1.</span> <span class="toc-text">S3 Glacier</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S3-存储类"><span class="toc-number">7.2.</span> <span class="toc-text">S3 存储类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RDS"><span class="toc-number">8.</span> <span class="toc-text">RDS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#可用性与持久性"><span class="toc-number">8.1.</span> <span class="toc-text">可用性与持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aurora"><span class="toc-number">8.2.</span> <span class="toc-text">Aurora</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能和可扩展性"><span class="toc-number">8.2.1.</span> <span class="toc-text">高性能和可扩展性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高可用性"><span class="toc-number">8.2.2.</span> <span class="toc-text">高可用性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自愈性和容错性"><span class="toc-number">8.2.3.</span> <span class="toc-text">自愈性和容错性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DynamoDB"><span class="toc-number">9.</span> <span class="toc-text">DynamoDB</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFront"><span class="toc-number">10.</span> <span class="toc-text">CloudFront</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关键术语"><span class="toc-number">10.1.</span> <span class="toc-text">关键术语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFormation"><span class="toc-number">11.</span> <span class="toc-text">CloudFormation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ELastic-Beanstalk"><span class="toc-number">12.</span> <span class="toc-text">ELastic Beanstalk</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RedShift"><span class="toc-number">13.</span> <span class="toc-text">RedShift</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudWatch"><span class="toc-number">14.</span> <span class="toc-text">CloudWatch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用场景"><span class="toc-number">14.1.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CloudWatch日志"><span class="toc-number">14.2.</span> <span class="toc-text">CloudWatch日志</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudTrail"><span class="toc-number">15.</span> <span class="toc-text">CloudTrail</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用场景-1"><span class="toc-number">15.1.</span> <span class="toc-text">使用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Route53"><span class="toc-number">16.</span> <span class="toc-text">Route53</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VPC-Virtyal-Private-Cloud"><span class="toc-number">17.</span> <span class="toc-text">VPC(Virtyal Private Cloud)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Well-architectured-Framework-完善的架构"><span class="toc-number">18.</span> <span class="toc-text">Well-architectured Framework(完善的架构)</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/AWS/AWS%20Certified%20Cloud%20Practitioner/aws.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Hawkeye</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">AWS认证云从业者</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-05-28 22:50:33"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-05-28</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-06-09 23:39:47"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-06-09</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/AWS/">AWS</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">6k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 18 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><span class="disqus-comment-count comment-count"><a href="https://mrhawkeye.com/2020/05/28/AWS%20%E8%AE%A4%E8%AF%81%E4%BA%91%E4%BB%8E%E4%B8%9A%E8%80%85/#disqus_thread"></a></span></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p>AWS Certified Cloud Practitioner 考试为那些具备有效展示对 AWS 云的全面理解所必需的知识和技能的个人而设立，独立于其他 AWS Certification 所涉及的特定技术角色。考生可以在考试中心参加考试，也可以采用在线监考考试形式，在家中或办公室中舒适便捷地参加考试。</p>
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">4</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">8</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IAM-Identity-and-Access-Management"><span class="toc-number">1.</span> <span class="toc-text">IAM(Identity and Access Management)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#功能特性"><span class="toc-number">1.1.</span> <span class="toc-text">功能特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念（Basic-concept）"><span class="toc-number">1.2.</span> <span class="toc-text">基本概念（Basic concept）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#身份验证（Authentication）"><span class="toc-number">1.3.</span> <span class="toc-text">身份验证（Authentication）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EC2（Elastic-Compute-Cloud）"><span class="toc-number">2.</span> <span class="toc-text">EC2（Elastic Compute Cloud）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EC2的价格模型"><span class="toc-number">2.1.</span> <span class="toc-text">EC2的价格模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#按需实例"><span class="toc-number">2.1.1.</span> <span class="toc-text">按需实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Savings-Plans"><span class="toc-number">2.1.2.</span> <span class="toc-text">Savings Plans</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预留实例"><span class="toc-number">2.1.3.</span> <span class="toc-text">预留实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spot-实例（竞价实例）"><span class="toc-number">2.1.4.</span> <span class="toc-text">Spot 实例（竞价实例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#专用主机"><span class="toc-number">2.1.5.</span> <span class="toc-text">专用主机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EC2的实例类型"><span class="toc-number">2.2.</span> <span class="toc-text">EC2的实例类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安全组"><span class="toc-number">3.</span> <span class="toc-text">安全组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EBS-Elastic-Block-Store"><span class="toc-number">4.</span> <span class="toc-text">EBS(Elastic Block Store)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EBS的特点"><span class="toc-number">4.1.</span> <span class="toc-text">EBS的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EBS类型"><span class="toc-number">4.2.</span> <span class="toc-text">EBS类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ELB-Elastic-Load-Balancing"><span class="toc-number">5.</span> <span class="toc-text">ELB(Elastic Load Balancing)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB的类型和特点"><span class="toc-number">5.1.</span> <span class="toc-text">ELB的类型和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB的模式"><span class="toc-number">5.2.</span> <span class="toc-text">ELB的模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Autoscaling"><span class="toc-number">6.</span> <span class="toc-text">Autoscaling</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#S3-Simple-Storage-Service"><span class="toc-number">7.</span> <span class="toc-text">S3(Simple Storage Service)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#S3-Glacier"><span class="toc-number">7.1.</span> <span class="toc-text">S3 Glacier</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S3-存储类"><span class="toc-number">7.2.</span> <span class="toc-text">S3 存储类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RDS"><span class="toc-number">8.</span> <span class="toc-text">RDS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#可用性与持久性"><span class="toc-number">8.1.</span> <span class="toc-text">可用性与持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aurora"><span class="toc-number">8.2.</span> <span class="toc-text">Aurora</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能和可扩展性"><span class="toc-number">8.2.1.</span> <span class="toc-text">高性能和可扩展性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高可用性"><span class="toc-number">8.2.2.</span> <span class="toc-text">高可用性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自愈性和容错性"><span class="toc-number">8.2.3.</span> <span class="toc-text">自愈性和容错性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DynamoDB"><span class="toc-number">9.</span> <span class="toc-text">DynamoDB</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFront"><span class="toc-number">10.</span> <span class="toc-text">CloudFront</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关键术语"><span class="toc-number">10.1.</span> <span class="toc-text">关键术语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFormation"><span class="toc-number">11.</span> <span class="toc-text">CloudFormation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ELastic-Beanstalk"><span class="toc-number">12.</span> <span class="toc-text">ELastic Beanstalk</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RedShift"><span class="toc-number">13.</span> <span class="toc-text">RedShift</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudWatch"><span class="toc-number">14.</span> <span class="toc-text">CloudWatch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用场景"><span class="toc-number">14.1.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CloudWatch日志"><span class="toc-number">14.2.</span> <span class="toc-text">CloudWatch日志</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudTrail"><span class="toc-number">15.</span> <span class="toc-text">CloudTrail</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用场景-1"><span class="toc-number">15.1.</span> <span class="toc-text">使用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Route53"><span class="toc-number">16.</span> <span class="toc-text">Route53</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VPC-Virtyal-Private-Cloud"><span class="toc-number">17.</span> <span class="toc-text">VPC(Virtyal Private Cloud)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Well-architectured-Framework-完善的架构"><span class="toc-number">18.</span> <span class="toc-text">Well-architectured Framework(完善的架构)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定价基础"><span class="toc-number">19.</span> <span class="toc-text">定价基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定价模式"><span class="toc-number">19.1.</span> <span class="toc-text">定价模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定价详情"><span class="toc-number">20.</span> <span class="toc-text">定价详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCO-Total-Cost-of-Ownership"><span class="toc-number">21.</span> <span class="toc-text">TCO(Total Cost of Ownership)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cost-Explorer"><span class="toc-number">22.</span> <span class="toc-text">Cost Explorer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AWS支持计划"><span class="toc-number">23.</span> <span class="toc-text">AWS支持计划</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标签、资源组与系统管理"><span class="toc-number">24.</span> <span class="toc-text">标签、资源组与系统管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组织与合并支付"><span class="toc-number">25.</span> <span class="toc-text">组织与合并支付</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安全性"><span class="toc-number">26.</span> <span class="toc-text">安全性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#责任共担模型"><span class="toc-number">27.</span> <span class="toc-text">责任共担模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AWS-WAF-amp-AWS-Shield"><span class="toc-number">28.</span> <span class="toc-text">AWS WAF &amp; AWS Shield</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Trusted-Advisor-amp-AWS-Inspector"><span class="toc-number">29.</span> <span class="toc-text">Trusted Advisor &amp; AWS Inspector</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/AWS/AWS%20Certified%20Cloud%20Practitioner/aws.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Hawkeye</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">AWS认证云从业者</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-05-28 22:50:33"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-05-28</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-07-21 22:12:24"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-07-21</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/AWS/">AWS</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">7.6k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 23 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><span class="disqus-comment-count comment-count"><a href="https://mrhawkeye.com/2020/05/28/AWS%20%E8%AE%A4%E8%AF%81%E4%BA%91%E4%BB%8E%E4%B8%9A%E8%80%85/#disqus_thread"></a></span></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p>AWS Certified Cloud Practitioner 考试为那些具备有效展示对 AWS 云的全面理解所必需的知识和技能的个人而设立，独立于其他 AWS Certification 所涉及的特定技术角色。考生可以在考试中心参加考试，也可以采用在线监考考试形式，在家中或办公室中舒适便捷地参加考试。</p>
 <h1 id="IAM-Identity-and-Access-Management"><a href="#IAM-Identity-and-Access-Management" class="headerlink" title="IAM(Identity and Access Management)"></a>IAM(Identity and Access Management)</h1><p>AWS Identity and Access Management (IAM) 是一种 Web 服务，可以安全的控制用户对AWS各种组件的访问权限。IAM可以控制哪些人用哪些方式使用哪些AWS资源。</p>
 <h2 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h2><ul>
 <li>账户内共享访问权限<br>授予契特人管理和使用你的AWS账户资源的权限，而无需共享密码或访问密钥</li>
@@ -327,6 +327,187 @@ function activateLightMode(){
 <li>性能效率(Performance efficiency)</li>
 <li>成本优化(Cost optimization)</li>
 </ul>
+<h1 id="定价基础"><a href="#定价基础" class="headerlink" title="定价基础"></a>定价基础</h1><h2 id="定价模式"><a href="#定价模式" class="headerlink" title="定价模式"></a>定价模式</h2><div class="note info">
+            <p><font size=3><strong>按需付费(Pay as you go)</strong></font></p>
+          </div>
+
+<ul>
+<li>无需提前预付巨额费用</li>
+<li>较少的可变成本</li>
+<li>按使用量付费</li>
+<li>按需付费</li>
+</ul>
+<p>益处：</p>
+<ul>
+<li>可以根据需要调整业务</li>
+<li>集中精力在我们的主营业务上</li>
+</ul>
+<div class="note info">
+            <p><font size=3><strong>预留容量，付费更少</strong></font><br>最高可节省75%，除了预留资源之外，其它都无需预付费用(No upfront costs)</p>
+          </div>
+
+<ul>
+<li>全额预付(All up-front,AURI)—最大折扣</li>
+<li>部分预付(Partial up-front,PURI)—稍低折扣</li>
+<li>无预付(No up-front payments,NURI)—最少折扣</li>
+</ul>
+<div class="note info">
+            <p><font size=3><strong>用量越大(按服务)，费用越少</strong></font></p>
+          </div>
+
+<ul>
+<li>使用量增加时节省更多</li>
+<li>数据传入始终是免费</li>
+<li>存储服务的多项选择帮助降低价格</li>
+</ul>
+<div class="note info">
+            <p><font size=3><strong>AWS规模越大，价格越低</strong></font><br>Pay even less as AWS grows,规模经济</p>
+          </div>
+
+<ul>
+<li>AWS专注于降低运营成本</li>
+<li>以节省的成本回馈客户</li>
+</ul>
+<h1 id="定价详情"><a href="#定价详情" class="headerlink" title="定价详情"></a>定价详情</h1><div class="note info">
+            <p><font size=3><strong>基础信息</strong></font></p>
+          </div>
+
+<ul>
+<li>付费<br>计算、存储、数据传出</li>
+<li>无需付费<br>数据传入、同一区域内服务之间数据传输</li>
+</ul>
+<div class="note info">
+            <p><font size=3><strong>EC2的价格因素</strong></font></p>
+          </div>
+
+<ul>
+<li>服务器实际小时数</li>
+<li>机器配置(AWS区域、OS、CPU、内存)</li>
+<li>机器购买类型(按需实例：按小时计算，不需要任何承诺条件；预留实例：一次性付款、少/无预付款实例预定，获得每小时的大幅折扣，竞价实例：对aws的闲置EC2实例竞价购买)</li>
+<li>实例数量</li>
+<li>负载均衡(ELB)：运行小时数，处理的数据量</li>
+<li>详细监控：(标准监控：免费，详细监控：不满一个月按小时计费)</li>
+<li>自动伸缩(AutoScaling)：自动伸缩本身是免费，但是开启的计算资源需要收费</li>
+<li>弹性IP地址(EIP):每个区域可以使用5个EIP免费资源</li>
+<li>操作系统和软件包：操作系统价格包含在EC2价格之内</li>
+</ul>
+<div class="note info">
+            <p><font size=3><strong>S3的价格因素</strong></font></p>
+          </div>
+
+<ul>
+<li>存储类别</li>
+<li>存储对象的数量和大小</li>
+<li>请求数(GET,PUT,COPY)</li>
+<li>数据传输</li>
+</ul>
+<div class="note info">
+            <p><font size=3><strong>EBS的价格因素</strong></font></p>
+          </div>
+
+<ul>
+<li>卷</li>
+<li>预置IOPS：每秒的输入输出操作数</li>
+<li>快照</li>
+<li>数据传输</li>
+</ul>
+<div class="note info">
+            <p><font size=3><strong>RDS的价格因素</strong></font></p>
+          </div>
+
+<ul>
+<li>服务器实际小时数</li>
+<li>数据库特征</li>
+<li>数据库购买类型</li>
+<li>数据库实例数量</li>
+<li>部署类型</li>
+<li>额外存储</li>
+</ul>
+<div class="note info">
+            <p><font size=3><strong>CloudFront的价格因素</strong></font></p>
+          </div>
+
+<ul>
+<li>流量分配</li>
+<li>请求数量</li>
+<li>数据传出</li>
+</ul>
+<h1 id="TCO-Total-Cost-of-Ownership"><a href="#TCO-Total-Cost-of-Ownership" class="headerlink" title="TCO(Total Cost of Ownership)"></a>TCO(Total Cost of Ownership)</h1><p>估算节约的成本以及与自建数据中心对比，生成详细报告。</p>
+<h1 id="Cost-Explorer"><a href="#Cost-Explorer" class="headerlink" title="Cost Explorer"></a>Cost Explorer</h1><ul>
+<li>快速入门</li>
+<li>设置时间间隔和粒度</li>
+<li>筛选/分组数据</li>
+<li>预测将来的成本和使用率</li>
+<li>保存进度</li>
+<li>以编程方式访问数据</li>
+</ul>
+<h1 id="AWS支持计划"><a href="#AWS支持计划" class="headerlink" title="AWS支持计划"></a>AWS支持计划</h1><ul>
+<li><p>基础支持计划</p>
+</li>
+<li><p>开发人员支持计划</p>
+</li>
+<li><p>商业支持计划</p>
+</li>
+<li><p>企业支持计划</p>
+</li>
+</ul>
+<p><img src="/" class="lazyload" data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/AWS/AWS%20Certified%20Cloud%20Practitioner/AWS%20Support.jpg"  alt="AWS Support"></p>
+<h1 id="标签、资源组与系统管理"><a href="#标签、资源组与系统管理" class="headerlink" title="标签、资源组与系统管理"></a>标签、资源组与系统管理</h1><div class="note info">
+            <p><font size=3><strong>标签</strong></font><br>用来识别AWS云资源，将相同作用的资源归类，便于搜索和资源聚合管理。</p>
+          </div>
+
+<div class="note info">
+            <p><font size=3><strong>资源组</strong></font><br>相同特征的AWS服务设置同一种标签，然后根据标签创建一个组。</p>
+          </div>
+
+<div class="note info">
+            <p><font size=3><strong>标签编辑器</strong></font><br>可以给设置标签的资源重新编辑标签。</p>
+          </div>
+
+<div class="note info">
+            <p><font size=3><strong>System Manager</strong></font><br>简化运维、轻松大规模运行和管理基础设置资源</p>
+          </div>
+
+<h1 id="组织与合并支付"><a href="#组织与合并支付" class="headerlink" title="组织与合并支付"></a>组织与合并支付</h1><p>可以用来集中管理AWS的环境，例如管理账单、控制访问权限、合规性和安全性，并在多个用户之间共享资源。</p>
+<div class="note info">
+            <p><font size=3>主账户(根账户)</font></p>
+          </div>
+
+<ul>
+<li>在组织中为所有账户付款的账户</li>
+<li>管理组织的中心节点</li>
+</ul>
+<div class="note info">
+            <p><font size=3>组织单元(OU,organization unit)</font></p>
+          </div>
+
+<ul>
+<li>组织单元是组织内的一种逻辑组</li>
+<li>把AWS账户添加到逻辑组中，账号管理更方便</li>
+<li>AWS账户和组织单元OU可以是另外一个组织单元PU的成员</li>
+<li>一个AWS账户可以是多个组织单元OU的成员</li>
+</ul>
+<div class="note info">
+            <p><font size=3>组织控制策略(Organization control policy(OCP))</font></p>
+          </div>
+
+<ul>
+<li>应用于组织单元和子账户的权限配置的策略 </li>
+</ul>
+<p>合并支付的好处：</p>
+<ul>
+<li>一个根账户负责支付所有子账户的费用</li>
+<li>集中付款容易控制成本，容易跟踪账单</li>
+<li>容易达到折扣额度</li>
+</ul>
+<h1 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h1><p>基础设施的安全性：合规性</p>
+<p>账户的安全性：IAM（删除根用户密钥、激活根账户的多因子验证、创建单独的IAM用户、最小权限管理、密码策略）<br>服务的安全性：IAM role，secunity group（EC2实例级别），NACL，日志记录和监控、加密和密钥管理、网络分段、DDos防护(Shield)等核心服务<br>应用的安全性: WAF</p>
+<h1 id="责任共担模型"><a href="#责任共担模型" class="headerlink" title="责任共担模型"></a>责任共担模型</h1><p><img src="/" class="lazyload" data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/AWS/AWS%20Certified%20Cloud%20Practitioner/%E8%B4%A3%E4%BB%BB%E5%85%B1%E6%8B%85.png"  alt="责任共担"><br>AWS负责“云的安全”，保护所有AWS云服务的基础设施的安全。</p>
+<p>客户负责“云中的安全”，通过服务的配置、操作系统的更新、安全补丁的安装、安全组、网络控制列表NACL使用AWS提供的安全服务等措施来保护客户自己所选的AWS云服务以及使用过程中产生的数据安全和传输安全等。</p>
+<h1 id="AWS-WAF-amp-AWS-Shield"><a href="#AWS-WAF-amp-AWS-Shield" class="headerlink" title="AWS WAF &amp; AWS Shield"></a>AWS WAF &amp; AWS Shield</h1><p>AWS WAF 是一种 Web 应用程序防火墙，可帮助保护您的 Web 应用程序或 API 免遭常见 Web 漏洞的攻击，这些漏洞可能会影响可用性、损害安全性或消耗过多的资源。</p>
+<p>AWS Shield 是一种托管式分布式拒绝服务 (DDoS) 防护服务，可以保护在 AWS 上运行的应用程序。AWS Shield 提供持续检测和自动内联缓解功能，能够尽可能缩短应用程序的停机时间和延迟，因此您不需要联系 AWS Support 来获得 DDoS 防护。AWS Shield 有两个层级，分别为 Standard(免费) 和 Advanced。</p>
+<h1 id="Trusted-Advisor-amp-AWS-Inspector"><a href="#Trusted-Advisor-amp-AWS-Inspector" class="headerlink" title="Trusted Advisor &amp; AWS Inspector"></a>Trusted Advisor &amp; AWS Inspector</h1><p>AWS Trusted Advisor 是AWS提供的可帮助通过优化AWS环境降低成本、提高性能并改善安全性的在线工具，Trusted Advisor提供实时指导，帮助按照AWS最佳实践配置资源。Trusted Advisor 会从成本优化、性能、安全性、容错、服务限制提供建议。</p>
+<p>Amazon Inspector 是一项自动安全评估服务，有助于提高在 AWS 上部署的应用程序的安全性与合规性。Amazon Inspector 会自动评估应用程序的风险、漏洞或者相较于最佳实践的偏差。执行评估后，Amazon Inspector 会生成按严重程度确定优先级的安全检测详细列表。</p>
 </div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AWS%E8%AE%A4%E8%AF%81/">AWS认证</a></div><div class="post_share"></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/05/28/SQLi-LABS%20Basic%20Challenges/"><img class="prev_cover lazyload" data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/penetration_testing/sqlinjection/sqlinjection.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SQLi-LABS Basic Challenges</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div id="disqus_thread"></div><script src="https://cdn.jsdelivr.net/npm/disqusjs@1.2/dist/disqus.js"></script><script>var dsqjs = new DisqusJS({
   shortname: 'https-mrhawkeye-com',
   siteName: "",
