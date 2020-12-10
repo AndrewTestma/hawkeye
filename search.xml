@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Linux网络抓包</title>
+      <link href="/2020/12/10/Linux%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
+      <url>/2020/12/10/Linux%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/</url>
+      
+        <content type="html"><![CDATA[<p>通过网络抓包功能捕获指定IP和端口的网络数据包、分析数据包内容，帮助定位网络故障和分析攻击行为，从而识别出网络通信的安全风险,常用的网络抓包工具有wireshark、tcpdump、ngrep等。</p><h1 id="网络抓包环境"><a href="#网络抓包环境" class="headerlink" title="网络抓包环境"></a>网络抓包环境</h1><p>网络不论传输什么样的数据，最终通过物理层传输的都是二进制，类似010101的bit流。想要进行抓包操作，就需要具备相应的网络环境。</p><h2 id="本地环境"><a href="#本地环境" class="headerlink" title="本地环境"></a>本地环境</h2><p>本地环境直接抓包本地网卡的进出的流量。不需要借助交换机就能抓取网络通信流量，这是最基本的抓包方式。<br><img src="/" class="lazyload" data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/network/%E6%9C%AC%E6%9C%BA%E7%8E%AF%E5%A2%83.png"  alt="本地环境"></p><h2 id="交换机环境"><a href="#交换机环境" class="headerlink" title="交换机环境"></a>交换机环境</h2><p>交换机环境是更为常见的方式，包括了端口镜像、ARP欺骗、MAC泛洪。<br><img src="/" class="lazyload" data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/network/%E4%BA%A4%E4%BA%92%E6%9C%BA%E7%8E%AF%E5%A2%83.png"  alt="交换机环境"></p><h1 id="网络抓包原理"><a href="#网络抓包原理" class="headerlink" title="网络抓包原理"></a>网络抓包原理</h1><blockquote><p>libpcap flow involving data copy from kernel to user space.</p></blockquote><p><code>libpcap</code>(Packet Capture Library)数据包捕获函数库,是Unix/Linux平台下的网络数据包捕获函数，它是一个独立于系统的用户层包捕获的API接口，为底层网络监测提供了一个可移植的框架。<b>wireshark(linux)、tcpdupm、ngrep等抓包工具都依赖<code>libpcap</code>库</b>。</p><p><img src="/" class="lazyload" data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/network/libpcap.png"  alt="libpcap"></p><p><code>libpcap</code>主要由两部分组成：</p><ul><li>网络分接头(Network Tap):网络分接头从网络设备驱动程序（NIC driver）中收集数据拷贝，过滤器决定是否接收该数据包。</li><li>数据过滤器(Packet Filter):libpcap 利用 BSD Packet Filter (BPF) 算法对网卡接收到的链路层数据包进行过滤。</li></ul><p>BPF 算法的基本思想：在有 BPF 监听的网络中，网卡驱动将接收到的数据包复制一份交给 BPF 过滤器，过滤器根据用户定义的规则决定是否接收此数据包以及需要拷贝该数据包的哪些内容，然后将过滤后的数据交给与过滤器相关联的上层应用程序。</p><p>libpcap 的包捕获机制：在数据链路层加一个旁路处理。当一个数据包到达网络接口时，libpcap 首先利用已经创建的类型为 PF_PACKET 的 Socket ，从位于链路层中的 NIC driver 中获得数据包的拷贝，再通过 Tap 函数将数据包发给 BPF 过滤器。BPF 过滤器根据用户已经定义好的过滤规则对数据包进行逐一匹配，匹配成功则放入内核缓冲区，进而传递给用户缓冲区，匹配失败则直接丢弃。如果没有设置过滤规则，所有数据包都将放入内核缓冲区，并传递给用户缓冲区。</p><p><code>libpcap</code>使用流程:</p><ul><li><p>决定对那一个接口进行嗅探，如eth0。我们也可以用一个字符串来定义这个设备。</p></li><li><p>初始化pcap。使用文件句柄传入需要嗅探的设备。同时支持多个设备的嗅探。</p></li><li><p>设置BPF. 创建一个规则集合，编译并且使用它。这个过程分为三个阶段: 1.规则集合被置于一个字符串内，并且被转换成能被pcap读的格式。2.编译该规则（就是调用一个不被外部程序使用的函数）。3.告诉pcap使用它来过滤数据包。</p></li><li><p>pcap进入它的主循环。在这个阶段内pcap一直工作到它接收了所有我们想要的包为止。每当它收到一个包（或者多个数据包）就调用另一个已经定义好的函数，这个函数可以做我们想要的任何工作，比如它可以剖析包的上层协议信息并给用户打印出结果，它可以将结果保存为一个文件，或者什么也不作。</p></li><li><p>在嗅探到所需的数据后，我们要关闭会话并结束。</p></li></ul><h1 id="网络抓包工具"><a href="#网络抓包工具" class="headerlink" title="网络抓包工具"></a>网络抓包工具</h1><p>由于wireshark(linux)、tcpdump、ngrep等工具都依赖的是<code>libpcap</code>库，所以抓取数据包、过滤数据包的方式都是一致的。</p><p>wireshark：通过Protocol-Tree、Dissectors(包含700中协议)、Plugins可以对pcap文件(<code>libpcap</code>生成的文件)中的协议内容进行解码，并通过Display-Filters引擎进行过滤显示(<a href="https://www.wireshark.org/docs/dfref/" target="_blank" rel="noopener">协议与过滤字段</a>)。</p><p>tcpdump：对截获的数据并没有进行彻底解码，数据包内的大部分内容是使用十六进制的形式直接打印输出的。显然这不利于分析网络故障，通常的解决办法是先使用带-w参数的tcpdump 截获数据并保存到文件中，然后再使用其他程序(如Wireshark)进行解码分析。</p><p>ngrep：ngrep工具是grep命令的网络版，ngrep用于抓包，并可以通过正则表达式，过滤、获取指定样式的数据包。比起tcpdump查看更加方便，但是需要自行安装。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> network </tag>
+            
+            <tag> libpcap </tag>
+            
+            <tag> 抓包 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker基础(一):Linux Namespace</title>
       <link href="/2020/07/21/Docker-Linux%20Namespace/"/>
       <url>/2020/07/21/Docker-Linux%20Namespace/</url>
