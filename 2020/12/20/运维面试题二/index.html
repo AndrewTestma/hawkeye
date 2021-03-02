@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>运维面试题(二) | Hawkeye</title><meta name="description" content="运维面试题(二)"><meta name="keywords" content="linux,network,docker,kubernetes"><meta name="author" content="AndrewMa"><meta name="copyright" content="AndrewMa"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="运维面试题(二)"><meta name="twitter:description" content="运维面试题(二)"><meta name="twitter:image" content="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/images.png"><meta property="og:type" content="article"><meta property="og:title" content="运维面试题(二)"><meta property="og:url" content="https://mrhawkeye.com/2020/12/20/%E8%BF%90%E7%BB%B4%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%8C/"><meta property="og:site_name" content="Hawkeye"><meta property="og:description" content="运维面试题(二)"><meta property="og:image" content="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/images.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://mrhawkeye.com/2020/12/20/%E8%BF%90%E7%BB%B4%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%8C/"><link rel="prev" title="Python-类继承" href="https://mrhawkeye.com/2021/02/26/Python-%E7%B1%BB%E7%BB%A7%E6%89%BF/"><link rel="next" title="Linux运维命令(二):SED" href="https://mrhawkeye.com/2020/12/18/Linux%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E4%BA%8Csed/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2/dist/disqusjs.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">18</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#系统运维"><span class="toc-number">1.</span> <span class="toc-text">系统运维</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell编程"><span class="toc-number">1.1.</span> <span class="toc-text">Shell编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell-常见特殊变量"><span class="toc-number">1.1.1.</span> <span class="toc-text">Shell 常见特殊变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与-的区别？"><span class="toc-number">1.1.2.</span> <span class="toc-text">$@ 与 $* 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#break、continue、exit、return的区别和对比"><span class="toc-number">1.1.3.</span> <span class="toc-text">break、continue、exit、return的区别和对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#描述Linux-shell中单引号、双引号及不加引号的简单区别"><span class="toc-number">1.1.4.</span> <span class="toc-text">描述Linux shell中单引号、双引号及不加引号的简单区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运维命令"><span class="toc-number">1.2.</span> <span class="toc-text">运维命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#top命令看到的CPU占用率信息及各项值含义"><span class="toc-number">1.2.1.</span> <span class="toc-text">top命令看到的CPU占用率信息及各项值含义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理概念"><span class="toc-number">1.3.</span> <span class="toc-text">原理概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux进程的状态"><span class="toc-number">1.3.1.</span> <span class="toc-text">Linux进程的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linux内核进程调度策略"><span class="toc-number">1.3.2.</span> <span class="toc-text">linux内核进程调度策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-CPU使用率的意义及原理"><span class="toc-number">1.3.3.</span> <span class="toc-text">Linux CPU使用率的意义及原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#描述Linux下软链接和硬链接的区别"><span class="toc-number">1.3.4.</span> <span class="toc-text">描述Linux下软链接和硬链接的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#描述Linux下文件删除的原理"><span class="toc-number">1.3.5.</span> <span class="toc-text">描述Linux下文件删除的原理</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/images.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Hawkeye</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">运维面试题(二)</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-12-20 21:58:27"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-12-20</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-12-20 23:55:58"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-12-20</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">3.3k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 11 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><span class="disqus-comment-count comment-count"><a href="https://mrhawkeye.com/2020/12/20/%E8%BF%90%E7%BB%B4%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%8C/#disqus_thread"></a></span></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="系统运维"><a href="#系统运维" class="headerlink" title="系统运维"></a>系统运维</h1><h2 id="Shell编程"><a href="#Shell编程" class="headerlink" title="Shell编程"></a>Shell编程</h2><h3 id="Shell-常见特殊变量"><a href="#Shell-常见特殊变量" class="headerlink" title="Shell 常见特殊变量"></a>Shell 常见特殊变量</h3><table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="left">作用</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$0</td>
+<td align="left">当前脚本的名称</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">$#</td>
+<td align="left">递给脚本或函数的参数个数</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">$*</td>
+<td align="left">传递给脚本或函数的所有参数</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">$@</td>
+<td align="left">传递给脚本或函数的所有参数。被双引号””包含时，与 $* 稍有不同。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">$?</td>
+<td align="left">上个命令的退出状态，或函数的返回值。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">$$</td>
+<td align="left">当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">$n</td>
+<td align="left">传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="left">作为匹配文件名扩展的一个通配符，能自动匹配给定目录下的每一个文件。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">~</td>
+<td align="left">波浪号，这个和shell环境变量$HOME是一样的。默认表示当前用户的家目录（主目录）</td>
+<td align="left"><code>echo ~</code>,查看家目录。</td>
+</tr>
+<tr>
+<td align="center">–</td>
+<td align="left">两个减号，与<code>~</code>相同，表示当前用户的家目录（主目录）</td>
+<td align="left"><code>cd --</code>,回到家目录。不能<code>echo --</code> 来打印输出。</td>
+</tr>
+<tr>
+<td align="center">~+</td>
+<td align="left">当前的工作目录(current working directory)。这个和shell环境变量<code>$PWD</code>一样。</td>
+<td align="left"><code>echo ~+</code>可以查看当前目录。</td>
+</tr>
+<tr>
+<td align="center">~-</td>
+<td align="left">前一个工作目录(previous working directory)。这个和内部变量<code>$OLDPWD</code>一致，和减号-一样</td>
+<td align="left"><code>echo ~-</code>可以查看前一个工作目录。</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="left">减号。和<code>~-</code>一样，表示前一个工作目录。</td>
+<td align="left"><code>cd -</code>，回到前一个工作目录，不能<code>echo -</code>来查看。</td>
+</tr>
+</tbody></table>
+<h3 id="与-的区别？"><a href="#与-的区别？" class="headerlink" title="$@ 与 $* 的区别？"></a>$@ 与 $* 的区别？</h3><p><code>$@</code> 和 <code>$*</code> 都表示脚本或者函数传入的参数，不被双引号””包含时，都以 <code>$1 $2 … $n</code> 的形式输出所有参数。</p>
+<p>但是当它们被双引号 “” 包含时，<code>&quot;$*&quot;</code>会将所有的参数作为一个整体，以<code>&quot;$1 $2 … $n&quot;</code>的形式输出所有参数。但是<code>&quot;$@&quot;</code>和<code>$@</code>一样，还是会将各个参数分开，以<code>$1 $2 … $n</code>的形式输出所有参数。</p>
+<div class="note info">
+            <p><a href="https://blog.csdn.net/K346K346/article/details/51819236" target="_blank" rel="noopener">Shell 特殊字符大全</a> </p>
+          </div>
+
+<h3 id="break、continue、exit、return的区别和对比"><a href="#break、continue、exit、return的区别和对比" class="headerlink" title="break、continue、exit、return的区别和对比"></a>break、continue、exit、return的区别和对比</h3><p><code>break n</code>:如果省略n,则表示跳出整个循环，n表示跳出循环的层数</p>
+<p><code>continue n</code>:如果省略n,则表示跳过本次循环，忽略本次循环的剩余代码，进入循环的下一次循环，n表示退出到第n层继续循环</p>
+<p><code>exit n</code>:退出当前shell,n为上次执行程序的状态返回值。exit 0表示正常退出，exit 1表示非正常退出</p>
+<p><code>return n</code>:用于在函数里作为函数的返回值，以判断函数执行的是否正确。</p>
+<h3 id="描述Linux-shell中单引号、双引号及不加引号的简单区别"><a href="#描述Linux-shell中单引号、双引号及不加引号的简单区别" class="headerlink" title="描述Linux shell中单引号、双引号及不加引号的简单区别"></a>描述Linux shell中单引号、双引号及不加引号的简单区别</h3><p>单引号：所见即所得，即将单引号内的内容原样输出，或者描述为单引号里面看到的是什么就输出什么。</p>
+<p>双引号：把双引号里面的内容给输出出来，如果内容中有命令、变量等，会先把变量、命令解析出结果，然后输出最终内容。</p>
+<p>双引号内的命令或者变量写法<code>’命令或变量’</code>或<code>$(命令或变量)</code></p>
+<p>无引号：把内容输出出来，可能不会将有空格的字符串，视为一个整体输出，如果内容中有命令、变量等，会先把变量、命令解析出来，然后输出最终内容，如果字符串中带有空格等特殊字符，则不能完整输出，需要改加双引号。一般连续的字符串，数字，路径等可以用，不过最好用双引号，替代之。</p>
+<h2 id="运维命令"><a href="#运维命令" class="headerlink" title="运维命令"></a>运维命令</h2><h3 id="top命令看到的CPU占用率信息及各项值含义"><a href="#top命令看到的CPU占用率信息及各项值含义" class="headerlink" title="top命令看到的CPU占用率信息及各项值含义"></a>top命令看到的CPU占用率信息及各项值含义</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top - 09:02:52 up 54 min,  1 user,  load average: 0.00, 0.01, 0.05</span><br><span class="line">Tasks: 184 total,   1 running, 183 sleeping,   0 stopped,   0 zombie</span><br><span class="line"><span class="meta">%</span><span class="bash">Cpu(s):  0.1 us,  0.0 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st</span></span><br><span class="line">KiB Mem :  3880992 total,  3052660 free,   514368 used,   313964 buff/cache</span><br><span class="line">KiB Swap:  4063228 total,  4063228 free,        0 used.  3103744 avail Mem</span><br></pre></td></tr></table></figure>
+<p>us: User time,用户态使用的cpu时间比。CPU一共花了多少比例的时间运行在用户态空间或者说是用户进程(running user space processes)。典型的用户态空间程序有：Shell、数据库、web服务器。</p>
+<p>sy:System time,系统态使用的cpu时间比。System的含义与User相似。System表示：CPU花了多少比例的时间在内核空间运行。分配内存、IO操作、创建子进程……都是内核操作。这也表明，当IO操作频繁时，System参数会很高。</p>
+<p>ni: Nice time,用做nice加权的进程分配的用户态cpu时间比。用户空间进程的CPU的调度优先级，范围为[-20,19]。每个linux进程都有个优先级，优先级高的进程有优先执行的权利，这个叫做pri。进程除了优先级外，还有个优先级的修正值。即比如你原先的优先级是20，然后修正值为-2，那么你最后的进程优先级为18。这个修正值就叫做进程的nice值。</p>
+<p>id: Idle time,空闲的cpu时间比。一般而言，idel + user + nice 约等于100%。</p>
+<p>wa: Waiting time,cpu等待磁盘写入完成时间。在计算机中，读写磁盘的操作远比CPU运行的速度要慢，CPU负载处理数据，而数据一般在磁盘上需要读到内存中才能处理。当CPU发起读写操作后，需要等着磁盘驱动器将数据读入内存，从而导致CPU 在等待的这一段时间内无事可做。CPU处于这种等待状态的时间由Wait参数来衡量。所以如果一台机器看到wa特别高，那么一般说明是磁盘IO出现问题。</p>
+<p>hi: Hard Irq time,硬中断消耗时间(cpu在执行程序的时候，突然外设硬件（比如硬盘出现问题了）机器需要立刻通知cpu进行现场保存工作。这个时候会cpu会出现上下文切换。就是cpu会有一部分时间会被硬中断占用了，这个时间就是hi。)</p>
+<p>si: SoftIrq time,软中断消耗时间(由软件的指令方式触发的)</p>
+<p>st: Steal time,虚拟机偷取时间。对虚拟机来说的，一台物理是可以虚拟化出几台虚拟机的。在其中一台虚拟机上用top查看发现st不为0，就说明本来有这么多个cpu时间是安排给这个虚拟机的，但是由于某种虚拟技术，把这个cpu时间分配给了其他的虚拟机了。这就叫做偷取。</p>
+<h2 id="原理概念"><a href="#原理概念" class="headerlink" title="原理概念"></a>原理概念</h2><h3 id="Linux进程的状态"><a href="#Linux进程的状态" class="headerlink" title="Linux进程的状态"></a>Linux进程的状态</h3><p><code>R</code>: 是 Running 或 Runnable 的缩写，表示进程在 CPU 的就绪队列中，正在运行或者正在等待运行。</p>
+<p><code>D</code>: 是 Disk Sleep 的缩写，也就是不可中断状态睡眠（Uninterruptible Sleep），一般表示进程正在跟硬件交互，并且交互过程不允许被其他进程或中断打断。</p>
+<p><code>Z</code>: 是 Zombie 的缩写，它表示僵尸进程，也就是进程实际上已经结束了，但是父进程还没有回收它的资源（比如进程的描述符、PID 等）。</p>
+<p><code>S</code>:是 Interruptible Sleep 的缩写，也就是可中断状态睡眠，表示进程因为等待某个事件而被系统挂起。当进程等待的事件发生时，它会被唤醒并进入 R 状态。</p>
+<p><code>I</code>: 是 Idle 的缩写，也就是空闲状态，用在不可中断睡眠的内核线程上。前面说了，硬件交互导致的不可中断进程用 D 表示，但对某些内核线程来说，它们有可能实际上并没有任何负载，用 Idle 正是为了区分这种情况。要注意，D 状态的进程会导致平均负载升高， I 状态的进程却不会。</p>
+<h3 id="linux内核进程调度策略"><a href="#linux内核进程调度策略" class="headerlink" title="linux内核进程调度策略"></a>linux内核进程调度策略</h3><p>Linux进程分为实时进程和非实时进程，内核使用一些简单的数值范围<code>0~139</code>表示内部优先级, 数值越低, 优先级越高。<code>从0~99的范围专供实时进程使用, nice的值[-20,19]则映射到范围100~139</code>。</p>
+<p>在用户空间通过<code>nice</code>命令设置进程的静态优先级, 这在内部会调用nice系统调用, 进程的nice值在-20~+19之间. 值越低优先级越高.</p>
+<p><code>实时调度算法</code>和<code>完全公平调度算法(CFS)</code>，实时调度算法SCHED_FIFO和SCHED_RR，按优先级执行，一般不会被抢占。直到实时进程执行完，才会执行普通进程。而大多数的普通进程，用的就是CFS算法。</p>
+<p>vruntime = (调度周期 * 进程权重 / 所有进程总权重) * 1024 / 进程权重=调度周期 * 1024 / 所有进程总权重<br>进程调度的时机：</p>
+<ul>
+<li>进程状态转换时刻：进程终止、进程睡眠；</li>
+<li>当前进程的”时间片”用完；</li>
+<li>主动让出处理器，用户调用sleep()或者内核调用schedule()；</li>
+<li>从中断，系统调用或异常返回时；</li>
+</ul>
+<div class="note info">
+            <p><a href="https://blog.csdn.net/zdy0_2004/article/details/46497337" target="_blank" rel="noopener">Linux进程调度CFS算法实现分析</a> | <a href="https://blog.csdn.net/yusiguyuan/article/details/39404399" target="_blank" rel="noopener">linux内核CFS进程调度策略</a> | <a href="https://blog.csdn.net/gatieme/article/details/51719208" target="_blank" rel="noopener">Linux进程的管理与调度</a></p>
+          </div>
+
+<h3 id="Linux-CPU使用率的意义及原理"><a href="#Linux-CPU使用率的意义及原理" class="headerlink" title="Linux CPU使用率的意义及原理"></a>Linux CPU使用率的意义及原理</h3><p>Linux CPU占用率计算，都是根据/proc/stat文件内容计算而来:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@cenots ~]# more /proc/stat </span><br><span class="line">cpu  819 0 1055 1633944 1136 0 9 0 0 0</span><br><span class="line">cpu0 201 0 362 408427 367 0 5 0 0 0</span><br><span class="line">cpu1 214 0 250 408514 234 0 1 0 0 0</span><br><span class="line">cpu2 279 0 275 408364 211 0 1 0 0 0</span><br><span class="line">cpu3 124 0 166 408637 323 0 1 0 0 0</span><br><span class="line">intr 1705750 40 10 0 0 0 0 0 0 1 0 0 0 16 0 0 0...  # 此处较多冗余信息，简化之</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这行给出中断的信息，第一个为自系统启动以来，发生的所有的中断的次数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 然后每个数对应一个特定的中断自系统启动以来所发生的次数。</span></span><br><span class="line"></span><br><span class="line">ctxt 1746531  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 自系统启动以来CPU发生的上下文交换的次数</span></span><br><span class="line">btime 1608469698  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 系统启动到现在的时间，单位为秒(s)</span></span><br><span class="line">processes 1584  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 自系统启动以来所创建的任务的个数目</span></span><br><span class="line">procs_running 2  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 当前运行队列的任务的数目</span></span><br><span class="line">procs_blocked 0  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 当前被阻塞的任务的数目</span></span><br><span class="line">softirq 201975 1 95286 818 1167 12630 0 566 49275 0 42232</span><br><span class="line"><span class="meta">#</span><span class="bash"> 此行显示所有CPU的softirq总数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 第一列是所有软件和每个软件的总数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 后面的列是特定softirq的总数</span></span><br></pre></td></tr></table></figure>
+<p><b>CPU值(1 jiffies = 0.01s = 10ms):</b></p>
+<table>
+<thead>
+<tr>
+<th align="center">cpu指标</th>
+<th align="center">含义</th>
+<th align="center">时间单位</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">user</td>
+<td align="center">用户态时间</td>
+<td align="center">jiffies</td>
+<td align="left">一般/高优先级，仅统计nice&lt;=0</td>
+</tr>
+<tr>
+<td align="center">nice</td>
+<td align="center">nice用户态时间</td>
+<td align="center">jiffies</td>
+<td align="left">低优先级，仅统计nice&gt;0</td>
+</tr>
+<tr>
+<td align="center">system</td>
+<td align="center">内核态时间</td>
+<td align="center">jiffies</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">idle</td>
+<td align="center">空闲时间</td>
+<td align="center">jiffies</td>
+<td align="left">不包含IO等待时间</td>
+</tr>
+<tr>
+<td align="center">iowait</td>
+<td align="center">I/O等待时间</td>
+<td align="center">jiffies</td>
+<td align="left">硬盘IO等待时间</td>
+</tr>
+<tr>
+<td align="center">irq</td>
+<td align="center">硬中断时间</td>
+<td align="center">jiffies</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">softirq</td>
+<td align="center">软中断时间</td>
+<td align="center">jiffies</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="center">steal</td>
+<td align="center">被盗时间</td>
+<td align="center">jiffies</td>
+<td align="left">虚拟化环境中运行其他操作系统上花费的时间（since Linux 2.6.11）</td>
+</tr>
+<tr>
+<td align="center">guest</td>
+<td align="center">来宾时间</td>
+<td align="center">jiffies</td>
+<td align="left">操作系统运行虚拟CPU花费的时间(since Linux 2.6.24)</td>
+</tr>
+<tr>
+<td align="center">guest_nice</td>
+<td align="center">nice来宾时间</td>
+<td align="center">jiffies</td>
+<td align="left">运行一个带nice值的guest花费的时间(since Linux 2.6.33)</td>
+</tr>
+</tbody></table>
+<p>CPU占用率计算公式:</p>
+<ul>
+<li>CPU时间=user+system+nice+idle+iowait+irq+softirq+Stl +guest</li>
+<li>%us=(User time + Nice time)/CPU时间*100%</li>
+<li>%sy=(System time + Hard Irq time +SoftIRQ time)/CPU时间*100%</li>
+<li>%id=(Idle time)/CPU时间*100%</li>
+<li>%ni=(Nice time)/CPU时间*100% </li>
+<li>%wa=(Waiting time)/CPU时间*100%</li>
+<li>%hi=(Hard Irq time)/CPU时间*100%</li>
+<li>%si=(SoftIRQ time)/CPU时间*100%</li>
+<li>%st=(Steal time)/CPU时间*100%</li>
+</ul>
+<div class="note info">
+            <p><a href="https://www.cnblogs.com/aresxin/p/9152127.html7" target="_blank" rel="noopener">Linux CPU使用率含义及原理</a> | <a href="https://www.jianshu.com/p/aea52895de5e" target="_blank" rel="noopener">linux/proc/stat详解</a> </p>
+          </div>
+
+<h3 id="描述Linux下软链接和硬链接的区别"><a href="#描述Linux下软链接和硬链接的区别" class="headerlink" title="描述Linux下软链接和硬链接的区别"></a>描述Linux下软链接和硬链接的区别</h3><p>在Linux系统中，链接分为两种，一种是硬链接（Hard link），另一种称为符号链接或软链接（Symbolic Link）。</p>
+<p>默认不带参数的情况下，ln创建的是硬链接，带-s参数的ln命令创建的是软链接。</p>
+<ul>
+<li>硬链接文件与源文件的inode节点号相同，而软链接文件的inode节点号，与源文件不同，</li>
+<li>ln命令不能对目录创建硬链接，但可以创建软链接。对目录的软链接会经常使用到。</li>
+<li>删除软链接文件，对源文件和硬链接文件无任何影响。</li>
+<li>删除硬链接文件，对源文件及软链接文件无任何影响。</li>
+<li>删除链接文件的源文件，对硬链接文件无影响，会导致其软链接失效（红底白字闪烁状）。</li>
+<li>同时删除源文件及其硬链接文件，整个文件才会被真正的删除。</li>
+<li>很多硬件设备的快照功能，使用的就是类似硬链接的原理。</li>
+<li>软链接可以跨文件系统，硬链接不可以跨文件系统。</li>
+</ul>
+<h3 id="描述Linux下文件删除的原理"><a href="#描述Linux下文件删除的原理" class="headerlink" title="描述Linux下文件删除的原理"></a>描述Linux下文件删除的原理</h3><p>Linux系统是通过link的数量来控制文件删除的，只有当一个文件不存在任何link的时候，这个文件才会被删除。一般来说每个文件两个link计数器来控制i_count和i_nlink。当一个文件被一个程序占用的时候i_count就加1。当文件的硬链接多一个的时候i_nlink也加1。删除一个文件，就是让这个文件，没有进程占用，同时i_link数量为0</p>
+</div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a><a class="post-meta__tags" href="/tags/network/">network</a><a class="post-meta__tags" href="/tags/docker/">docker</a><a class="post-meta__tags" href="/tags/kubernetes/">kubernetes</a></div><div class="post_share"></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/02/26/Python-%E7%B1%BB%E7%BB%A7%E6%89%BF/"><img class="prev_cover lazyload" data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/images.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Python-类继承</div></div></a></div><div class="next-post pull_right"><a href="/2020/12/18/Linux%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E4%BA%8Csed/"><img class="next_cover lazyload" data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/sed/Basic-SED-Commands.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux运维命令(二):SED</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/12/18/运维面试题一/" title="运维面试题(一)"><img class="relatedPosts_cover lazyload"data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/images.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-12-18</div><div class="relatedPosts_title">运维面试题(一)</div></div></a></div><div class="relatedPosts_item"><a href="/2020/12/18/Linux运维命令一awk/" title="Linux运维命令(一):AWK"><img class="relatedPosts_cover lazyload"data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/awk/awk.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-12-18</div><div class="relatedPosts_title">Linux运维命令(一):AWK</div></div></a></div><div class="relatedPosts_item"><a href="/2020/12/18/Linux运维命令二sed/" title="Linux运维命令(二):SED"><img class="relatedPosts_cover lazyload"data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/sed/Basic-SED-Commands.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-12-18</div><div class="relatedPosts_title">Linux运维命令(二):SED</div></div></a></div><div class="relatedPosts_item"><a href="/2020/07/21/Docker-Linux Namespace/" title="Docker基础(一):Linux Namespace"><img class="relatedPosts_cover lazyload"data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/docker/docker-logo.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-07-21</div><div class="relatedPosts_title">Docker基础(一):Linux Namespace</div></div></a></div><div class="relatedPosts_item"><a href="/2020/12/10/Linux网络抓包/" title="Linux网络抓包"><img class="relatedPosts_cover lazyload"data-src="https://andrewhawkeye.oss-cn-beijing.aliyuncs.com/Blog/linux/network/network.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-12-10</div><div class="relatedPosts_title">Linux网络抓包</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div id="disqus_thread"></div><script src="https://cdn.jsdelivr.net/npm/disqusjs@1.2/dist/disqus.js"></script><script>var dsqjs = new DisqusJS({
+  shortname: 'https-mrhawkeye-com',
+  siteName: "",
+  identifier: '2020/12/20/运维面试题二/',
+  url: 'https://mrhawkeye.com/2020/12/20/%E8%BF%90%E7%BB%B4%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BA%8C/',
+  title: '运维面试题(二)',
+  api: 'https://disqus.skk.moe/disqus/',
+  apikey: 'RBA82EIcXT26ZciK9afinbbylQhWe5XhdElfuo9RlAWaXw2STlkvyHfoIGMHcMYN',
+  admin: '',
+  adminLabel: ''
+});
+</script><script>function getDisqusCount() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://https-mrhawkeye-com.disqus.com/count.js';
+  s.id = 'dsq-count-scr';
+  (d.head || d.body).appendChild(s);
+}
+window.addEventListener('load', getDisqusCount, false);</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By AndrewMa</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/search/local-search.js"></script></body></html>
